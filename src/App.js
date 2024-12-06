@@ -32,8 +32,37 @@ function App() {
     }, 1500);
   }
 
-  const toggleMode = () => {
-      if(mode === 'light')
+  const removeBodyCLasses= () => {
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-warning');
+  }
+
+  const toggleMode = (cls) => {
+    removeBodyCLasses();
+    document.body.classList.add('bg-'+cls);
+      // if(mode === 'light')
+      // {
+      //   setMode('dark');
+      //   document.body.style.backgroundColor = '#042743';
+      //   showAlert("Dark mode has been enabled", "success");
+      // }
+      // else if(mode === 'dark')
+      // {
+      //   setMode('light');
+      //   document.body.style.backgroundColor = '#ffffff';
+      //   showAlert("Light mode has been enabled", "success");
+      // }
+      // else{ 
+      //   return null;
+      // }
+    }
+  
+  const toggleModeNavbar = (cls) => {
+    removeBodyCLasses();
+    if(mode === 'light')
       {
         setMode('dark');
         document.body.style.backgroundColor = '#042743';
@@ -54,7 +83,7 @@ function App() {
       <Navbar 
         title= "TextUtils" 
         //about = "About us"
-        mode = {mode} toggleMode = {toggleMode}
+        mode = {mode} toggleMode = {toggleMode} toggleModeNavbar= {toggleModeNavbar}
       />
       <Alert alert = {alert}/>
         <div className="container my-3">
